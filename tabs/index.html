@@ -1,0 +1,103 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>tab选项卡</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+    <link href="style.css" rel="stylesheet" type="text/css">
+  </head>
+  <body>
+    <div class="tab-box">
+      <div class="top-box">
+            <ul class="nav-top">
+              <li class="on">大国小民</li>
+              <li>热观察</li>
+              <li>另一面</li>
+              <li>数读</li>
+            </ul>
+            <span class="line"></span>
+        </div>
+        <div class="nav-mid">
+            <div class="box01">
+               <ul class="newlist">
+                  <li><em class="em-arrow">&nbsp;</em><a href="javascript:void(0)">今天好嗨森啊</a></li>
+                  <li><em class="em-arrow">&nbsp;</em><a href="javascript:void(0)">今天好嗨森啊今天好嗨森啊</a></li>
+                  <li><em class="em-arrow">&nbsp;</em><a href="javascript:void(0)">今天好嗨森啊今天好嗨森啊今天好嗨森啊</a></li>
+                  <li><em class="em-arrow">&nbsp;</em><a href="javascript:void(0)">今天好嗨森啊今天好嗨森啊今天好嗨森啊今天好嗨森啊</a></li>
+               </ul>
+               <a href="javascript:void(0)" class="btn-href">进入大国小民中心>></a>
+            </div>
+            <div class="box01">
+                <ul class="newlist">
+                  <li><em class="em-arrow">&nbsp;</em><a href="javascript:void(0)">今天你嗨森吗</a></li>
+                  <li><em class="em-arrow">&nbsp;</em><a href="javascript:void(0)">今天你嗨森吗今天你嗨森吗</a></li>
+                  <li><em class="em-arrow">&nbsp;</em><a href="javascript:void(0)">今天你嗨森吗今天你嗨森吗今天你嗨森吗</a></li>
+                  <li><em class="em-arrow">&nbsp;</em><a href="javascript:void(0)">今天你嗨森吗今天你嗨森吗今天你嗨森吗今天你嗨森吗</a></li>
+               </ul>
+               <a href="javascript:void(0)" class="btn-href">进入热观察中心>></a>
+            </div>
+            <div class="box01">
+                <ul class="newlist">
+                  <li><em class="em-arrow">&nbsp;</em><a href="javascript:void(0)">妈妈说做人不要装逼</a></li>
+                  <li><em class="em-arrow">&nbsp;</em><a href="javascript:void(0)">妈妈说做人不要装逼妈妈说做人不要装逼</a></li>
+                  <li><em class="em-arrow">&nbsp;</em><a href="javascript:void(0)">妈妈说做人不要装逼妈妈说做人不要装逼妈妈说做人不要装逼</a></li>
+                  <li><em class="em-arrow">&nbsp;</em><a href="javascript:void(0)">妈妈说做人不要装逼妈妈说做人不要装逼妈妈说做人不要装逼妈妈说做</a></li>
+               </ul>
+               <a href="javascript:void(0)" class="btn-href">进入另一面频道>></a>
+            </div>
+            <div class="box01">
+                <ul class="newlist">
+                  <li><em class="em-arrow">&nbsp;</em><a href="javascript:void(0)">你只负责笑</a></li>
+                  <li><em class="em-arrow">&nbsp;</em><a href="javascript:void(0)">你只负责笑你只负责笑</a></li>
+                  <li><em class="em-arrow">&nbsp;</em><a href="javascript:void(0)">你只负责笑你只负责笑你只负责笑</a></li>
+                  <li><em class="em-arrow">&nbsp;</em><a href="javascript:void(0)">你只负责笑你只负责笑你只负责笑你只负责笑</a></li>
+               </ul>
+               <a href="javascript:void(0)" class="btn-href">进入数读>></a>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript" language="javascript" src="zepto.js"></script>
+    <script type="text/javascript">
+      $(function(){
+      	var len=0;
+      	var f=0;
+      	var cq=0;
+      	$('.nav-top li').tap(function(){
+    			var t=$(this).index();
+    			var wh=$('.line').width();
+    			f=-25*t+"%";
+    			cq=100*t+"%";
+    			$(this).parents('.tab-box').find('.nav-mid').css({'-webkit-transform':'translate('+f+')','-webkit-transition':'500ms linear'} );
+    			$(this).parents('.tab-box').find('.line').css({'-webkit-transform':'translate('+cq+')','-webkit-transition':'300ms linear'} );
+    			$(this).siblings().removeClass('on');
+    			$(this).addClass('on');
+    		});
+      	$('.box01').swipeLeft(function(){
+      	  var i=$(this).index()+1;
+      	  len=-25*i+"%";
+      	  cq=100*i+"%";
+      	  if(i==4){return false}
+      	  else{
+      		  $(this).parent('.nav-mid').css({'-webkit-transform':'translate('+len+')','-webkit-transition':'500ms linear'} );
+      		  $(this).parents('.tab-box').find('.line').css({'-webkit-transform':'translate('+cq+')','-webkit-transition':'500ms linear'} );
+      		  $(this).parents('.tab-box').find('.nav-top li').eq(i).siblings().removeClass('on');
+      		  $(this).parents('.tab-box').find('.nav-top li').eq(i).addClass('on');
+      	  } 
+      	});
+      	$('.box01').swipeRight(function(){
+      	  var i=$(this).index();
+      	  if(i==0){return false}
+      	  else{
+      		  var n=i-1;
+      		  len=-25*n+"%";
+      		  cq=100*n+"%";
+      		  $(this).parents('.tab-box').find('.nav-mid').css({'-webkit-transform':'translate('+len+')','-webkit-transition':'500ms linear'} );
+      		  $(this).parents('.tab-box').find('.line').css({'-webkit-transform':'translate('+cq+')','-webkit-transition':'500ms linear'} );
+      		  $(this).parents('.tab-box').find('.nav-top li').eq(i-1).siblings().removeClass('on');
+      		  $(this).parents('.tab-box').find('.nav-top li').eq(i-1).addClass('on');
+      	  } 
+      	})
+      })
+    </script>
+  </body>
+</html>
